@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserAuthRoute = exports.AdminRoute = exports.UserRoute = exports.IndexRoute = void 0;
+var IndexRoute_1 = require("./IndexRoute");
+Object.defineProperty(exports, "IndexRoute", { enumerable: true, get: function () { return IndexRoute_1.IndexRoute; } });
+var routes_1 = require("../../modules/user/routes");
+Object.defineProperty(exports, "UserRoute", { enumerable: true, get: function () { return routes_1.UserRoute; } });
+var routes_2 = require("../../modules/admin/routes");
+Object.defineProperty(exports, "AdminRoute", { enumerable: true, get: function () { return routes_2.AdminRoute; } });
+var routes_3 = require("../../modules/authentication/routes");
+Object.defineProperty(exports, "UserAuthRoute", { enumerable: true, get: function () { return routes_3.UserAuthRoute; } });

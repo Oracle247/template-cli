@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import createModule from './src/commands/generate';
-import { scaffoldBaseTemplate } from './src/commands/init';
+import createModule from './commands/generate';
+import { scaffoldBaseTemplate } from './commands/init';
 
 const program = new Command();
 

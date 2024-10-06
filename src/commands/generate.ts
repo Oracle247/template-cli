@@ -3,7 +3,7 @@ import { ensureDirSync, writeFileSync } from '../utils/fileUtils';
 import { readTemplate } from '../utils/templateUtils';
 
 const createModule = (moduleName: string): void => {
-    const baseDir = path.join(process.cwd(), 'src/modules', moduleName);
+    const baseDir = path.join(process.cwd(), 'src/modules', moduleName.toLowerCase());
 
     const structure = [
         { dir: 'services', file: `${moduleName}.service.ts`, template: 'service.ts' },
@@ -20,7 +20,14 @@ const createModule = (moduleName: string): void => {
         ensureDirSync(dirPath);
 
         const templateContent = readTemplate(template);
-        const fileContent = templateContent.replace(/__MODULE__/g, moduleName);
+        let fileContent = templateContent.replace(/__MODULE__/g, moduleName);
+        fileContent = fileContent.replace(/__module__/g, moduleName.toLowerCase());
+
+        // Remove the first line (`// @ts-nocheck`)
+        const fileContentLines = fileContent.split('\n');
+        fileContentLines.shift();
+        fileContent = fileContentLines.join('\n');
+
         writeFileSync(path.join(dirPath, file), fileContent);
 
         console.log(`Created ${file} in ${dir}`);
